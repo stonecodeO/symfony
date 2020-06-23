@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Ubuntu:300,400,500,700");
+
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+.header-nav{
+    position: fixed;
+    top: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),0 1px 3px rgba(0, 0, 0, 0.24);
+    width: 100%;
+    z-index: 2;
+}
+.corp{
+    margin-top: 75px;
+}
+.thumb{
+    width: 100%;
+    height: 159px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) ;
+    grid-gap: 20px;
+}
+.card-title{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.footer{
+    background: #011e2e;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-top: 40px;
+}
+.-filter{
+    display: block;
+    position: sticky;
+    top: 64px;
+}
+.formRecherche{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),0 1px 3px rgba(0, 0, 0, 0.24);
+    padding: 3rem;
+}
+.is-loading::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    opacity: 0.5;
+
+}
+.is-loading .spinner-border{
+    position: absolute;
+    top: calc(50% - 1rem);
+    left: calc(50% - 1rem);
+    z-index: 100;
+}

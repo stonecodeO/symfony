@@ -1,0 +1,66 @@
+<doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+
+    {% endblock %}
+    {% block stylesheets %}
+        {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') | replace({'src=': 'defer src='}) | raw }}
+        <!-- Renders a link tag (if your module requires any CSS)
+              <link rel="stylesheet" href="/build/app.css"> -->
+    {% endblock %}
+</head>
+ <body>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light header-nav">
+     <a cl ass="navbar-brand" href="#">E-Commerce</a>
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+             <li class="nav-item active">
+                 <a class="nav-link" href="{{ path('product') }}">Boutique <span class="sr-only">(current)</span></a>
+             </li>
+             <li class="nav-item active">
+                 <a class="nav-link" href="#">Blog <span class="sr-only">(current)</span></a>
+             </li>
+             <li class="nav-item active">
+                 <a class="nav-link" href="{{ path('contact') }}">Contact <span class="sr-only">(current)</span></a>
+             </li>
+         </ul>
+         <ul class="navbar-nav">
+             {% if not app.user %}
+                 <li class="nav-item active mr-auto">
+                     <a class="nav-link " href="{{ path('security_login') }}"><i class="fa fa-user" aria-hidden="true">&nbsp</i>Se Connecter</a>
+                 </li>
+             {% else %}
+                 <li class="nav-item ">
+                     <a class="nav-link " href="{{ path('security_logout') }}"><i class="fa fa-user" aria-hidden="true">&nbsp</i>Se Deconnecter</a>
+                 </li>
+             {% endif %}
+             <li class="nav-item ">
+                 <a class="nav-link" href="{{ path('cart') }}"><i class="fas fa-shopping-cart">&nbsp</i>Panier &nbsp {{ app.session.get('panier')| length }}</a>
+             </li>
+         </ul>
+
+     </div>
+ </nav>
+     {% block body %}
+
+     {% endblock %}
+
+ <!-- Footer -->
+ <footer class="footer">
+     <!-- Copyright -->
+     <div class="footer-copyright text-center">© 2020 Copyright:
+         <a href="#"> Ecommerce</a>
+     </div>
+     <!-- Copyright -->
+ </footer>
+ <!-- Footer -->
+ </body>
+
+</html>
+
+

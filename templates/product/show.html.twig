@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <title>{{ product.name }}</title>
+{% endblock %}
+{% block body %}
+<div class="container corp">
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{{ vich_uploader_asset(product,'imageFile')}}" class="middle" alt="">
+        </div>
+        <div class="col-md-4">
+            <h2>{{ product.name }}</h2>
+            <div class="text-primary" style="font-size: 4rem; font-weight: bold;">{{ product.price | number_format(0, '.',' ') }} FCFA</div>
+            {% if product.promo %}
+                <div class="text text-warning">
+                    En promo!
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <p>{{ product.description }}</p>
+</div>
+{% endblock %}

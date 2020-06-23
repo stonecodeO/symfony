@@ -1,0 +1,25 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.project_dir%/public"
+                cache_prefix: "images/cache"
+    loaders:
+        default:
+            filesystem:
+                data_root: "%kernel.project_dir%/public/images/products"
+
+    driver:               "gd"
+    cache:                default
+    data_loader:          default
+    default_image:        null
+    controller:
+        filter_action:         liip_imagine.controller:filterAction
+        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+    filter_sets:
+        thumb:
+            filters:
+                thumbnail:
+                    size:          [200, 200]
+                    mode:          outbound
+                    allow_upscale: true

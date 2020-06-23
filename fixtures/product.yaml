@@ -1,0 +1,10 @@
+App\Entity\Product:
+  product_{1..100}:
+    name: <productName()>
+    price: <numberBetween(50, 50000)>
+    description: <text(100)>
+    category: '@category_*'
+    promo: '10%? 1 : 0'
+App\Entity\Category:
+  category_{1..10}:
+    name: <creature()>

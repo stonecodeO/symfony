@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    <title>Tous nos produits</title>
+{% endblock %}
+
+{% block body %}
+        <div class="container corp js-filter">
+            <div class="row">
+                <div class="col-md-3 formRecherche">
+                    {{ form_start(form, {attr: {class: '-filter js-filter-form'}}) }}
+                    <div class="spinner-border js-loading" role="status" aria-hidden="true" style="display: none;">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    {{ form_row(form.recherche) }}
+                    <h5>Catégories</h5>
+                    {{ form_row(form.categories) }}
+                    <h5>Prix</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.prixMin) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.prixMax) }}
+                        </div>
+                    </div>
+                    <div id="price-slider" data-min =" {{ min }}" data-max = "{{ max }}" style="margin-bottom: 3rem;"></div>
+                    <h5>En promotion</h5>
+                    {{ form_row(form.promo) }}
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-md-9 mb-2">
+                    <div class="d-flex justify-content-end mb-2 js-filter-sorting">
+                        {% include 'product/_sorting.html.twig' %}
+                    </div>
+                    <div class="grid mb-2 js-filter-content">
+                       {% include 'product/_product.html.twig' %}
+                    </div>
+                    <div class="pagination mb-4 js-filter-pagination" >
+                        {% include 'product/_pagination.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

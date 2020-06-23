@@ -1,0 +1,20 @@
+<div class="card" id="product-{{ product.id }}">
+    {% if product.image %}
+    <img src="{{ vich_uploader_asset(product,'imageFile')}}" class="card-img-top thumb" alt="...">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="title">{{ product.name}}<br/><a href="{{ path('product_show',{id: product.id})  }}">Voir la fiche</a></h5>
+        <div class="card-title">
+            {{ product.price | number_format(0, '.',' ') }} FCFA
+            {% if product.promo %}
+                <div class="text text-warning">
+                    En promo!
+                </div>
+            {% endif %}
+        </div>
+        <a href="{{ path('cart_add',{'id': product.id}) }}" class="btn btn-success"><i class="fas fa-shopping-cart"></i>Ajouter au panier</a>
+        <div>
+           <em class="text-muted text-primary text-italic"># {{ product.category }}</em>
+        </div>
+    </div>
+</div>
